@@ -18,7 +18,7 @@ qrBtn.addEventListener("click", (e) => {
   modal.style.display = "flex";
 
   // Start 5-minute countdown
-  let timeLeft = 5; // seconds
+  let timeLeft = 300; // seconds
   doneBtn.disabled = true;
 
   countdownInterval = setInterval(() => {
