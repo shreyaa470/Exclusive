@@ -56,4 +56,45 @@ doneBtn.addEventListener("click", () => {
 });
 
 
+//Another Payment
+// Second QR Button (Scan & Pay)
+const scanPayBtn = document.getElementById("scan-pay-btn");
+const scanPayModal = document.getElementById("scan-pay-modal");
+const scanCloseBtn = document.querySelector(".close-scan");
+const scanDoneBtn = document.getElementById("scan-payment-done-btn");
+
+let scanCountdown;
+
+scanPayBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  scanPayModal.style.display = "flex";
+  scanDoneBtn.disabled = true;
+
+  let timeLeft = 300;
+
+  scanCountdown = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(scanCountdown);
+      scanDoneBtn.disabled = false;
+      scanDoneBtn.textContent = "✅ I've Paid";
+      scanDoneBtn.addEventListener("click", () => {
+        window.location.href = "req.html"; // or another redirect
+      });
+    } else {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      scanDoneBtn.textContent = `⏳ Do Payment ${min}:${sec.toString().padStart(2, "0")}`;
+      timeLeft--;
+    }
+  }, 1000);
+});
+
+scanCloseBtn.addEventListener("click", () => {
+  scanPayModal.style.display = "none";
+  clearInterval(scanCountdown);
+  scanDoneBtn.textContent = "⏳ Do Payment In 5:00";
+});
+
+//Payment Screenshot
+
 //Request Access
