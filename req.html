@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request File Access</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .glow-button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(26, 115, 232, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-button:hover {
+      background: #155ab6;
+      box-shadow: 0 0 20px rgba(26, 115, 232, 0.9), 0 0 40px rgba(26, 115, 232, 0.6);
+      transform: scale(1.05);
+    }
+
+    .glow-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10.01%);
+      background-size: 10% 10%;
+      animation: pulse 4s linear infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 30px 20px;
+        width: 90%;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Request Access</h1>
+    <p>You need permission to view this file. Click below to request access.</p>
+    <button class="glow-button" onclick="requestAccess()">Request Access</button>
+  </div>
+
+  <script>
+    function requestAccess() {
+      const fileLink = "https://drive.google.com/drive/folders/19obDKVRwlvyWrgMbV_fZqV3OE8kv3KZn"; // Replace with your actual link
+      window.open(fileLink, "_blank");
+    }
+  </script>
+
+</body>
+</html>
